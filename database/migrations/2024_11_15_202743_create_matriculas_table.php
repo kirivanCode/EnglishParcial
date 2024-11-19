@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('estado');
             $table->foreignId('registro_id')->constrained('usuarios')->onDelete('cascade');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('fecha_finalizacion');
             $table->foreignId('curso_id')->constrained('cursos')->onDelete('cascade');
             $table->foreignId('periodo_academico_id')->constrained('periodo_academicos')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

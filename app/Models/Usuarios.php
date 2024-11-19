@@ -4,9 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Usuarios extends Model
 {
+
+    use SoftDeletes;
     protected $fillable = ['nombre', 'tipo_rol', 'matriculas_id'];
 
     // Relación con Role
@@ -18,7 +21,7 @@ class Usuarios extends Model
     // Relación con Matrícula
     public function matricula()
     {
-        return $this->belongsTo(Matriculas::class, 'matriculas_id');
+        return $this->belongsTo(Matricula::class, 'matriculas_id');
     }
 
     // Relación con Grupo

@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->foreignId('tipo_rol')->constrained('roles')->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

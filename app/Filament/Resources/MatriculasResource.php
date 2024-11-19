@@ -65,14 +65,18 @@ class MatriculasResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
-                //
+                Tables\Filters\TrashedFilter::make(), // Filtro para ventas eliminadas
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\RestoreAction::make(),  // Acción para restaurar registros eliminados
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
+                    Tables\Actions\RestoreBulkAction::make(), // Restaurar en masa
                     Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\ForceDeleteBulkAction::make(), // Eliminar permanentemente
                 ]),
             ]);
     }

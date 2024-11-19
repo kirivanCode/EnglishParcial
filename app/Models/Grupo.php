@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Grupo extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = ['nombre', 'descripcion', 'docente_id', 'salon', 'capacidad', 'fecha_inicio', 'fecha_finalizacion', 'curso_id', 'periodo_academico_id'];
 

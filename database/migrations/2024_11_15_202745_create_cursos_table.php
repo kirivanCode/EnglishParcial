@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->string('modalidad');
             $table->string('requisito');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -64,14 +64,18 @@ class PeriodoAcademicoResource extends Resource
                 ->dateTime(),
         ])
         ->filters([
-            // Filtros pueden añadirse aquí si es necesario
+            Tables\Filters\TrashedFilter::make(), // Filtro para ventas eliminadas
         ])
         ->actions([
-            Tables\Actions\EditAction::make(), // Acción de edición
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\RestoreAction::make(),  // Acción para restaurar registros eliminados
+            Tables\Actions\DeleteAction::make(),
         ])
         ->bulkActions([
-            Tables\Actions\BulkActionGroup::make([ // Acciones en grupo
-                Tables\Actions\DeleteBulkAction::make(), // Acción de eliminación en grupo
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\RestoreBulkAction::make(), // Restaurar en masa
+                Tables\Actions\DeleteBulkAction::make(),
+                Tables\Actions\ForceDeleteBulkAction::make(), // Eliminar permanentemente
             ]),
         ]);
 }

@@ -16,6 +16,7 @@ return new class extends Migration
     $table->year('año');
     $table->integer('trimestre');
     $table->string('nombre')->unique();
+    $table->softDeletes();
     $table->timestamps();
         });
     }
